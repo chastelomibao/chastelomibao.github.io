@@ -116,7 +116,7 @@ html { scroll-behavior: smooth; }
 
 /* Portrait photo frame: fills the column height, anchored to bottom */
 .hero-photo-box {
-  background: var(--charcoal);
+  background: #050505;
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -124,14 +124,141 @@ html { scroll-behavior: smooth; }
   overflow: hidden;
   min-height: calc(100vh - 56px);
 }
+
+/* === BLACK/GOLD AURA BACKGROUND === */
+.hero-aura-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Base radial glow from center */
+.hero-aura-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 50% 60%,
+      rgba(201,168,76,0.18) 0%,
+      rgba(201,168,76,0.07) 35%,
+      rgba(201,168,76,0.02) 60%,
+      transparent 80%),
+    radial-gradient(ellipse 80% 50% at 50% 90%,
+      rgba(201,168,76,0.12) 0%,
+      transparent 60%);
+}
+
+/* Gold shimmer sweep at top */
+.hero-aura-bg::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 60%;
+  background: radial-gradient(ellipse at 50% 0%,
+    rgba(232,201,106,0.08) 0%,
+    transparent 70%);
+  animation: auraPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes auraPulse {
+  0%   { opacity: 0.5; transform: translateX(-50%) scaleY(1); }
+  100% { opacity: 1;   transform: translateX(-50%) scaleY(1.15); }
+}
+
+/* Concentric glowing rings */
+.aura-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.15);
+  animation: ringExpand 6s ease-in-out infinite alternate;
+}
+.aura-ring-1 {
+  width: 320px; height: 320px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -40%);
+  border-color: rgba(201,168,76,0.22);
+  box-shadow: 0 0 40px rgba(201,168,76,0.08), inset 0 0 40px rgba(201,168,76,0.04);
+  animation-duration: 5s;
+}
+.aura-ring-2 {
+  width: 500px; height: 500px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -40%);
+  border-color: rgba(201,168,76,0.12);
+  box-shadow: 0 0 60px rgba(201,168,76,0.05);
+  animation-duration: 6.5s;
+  animation-delay: 0.5s;
+}
+.aura-ring-3 {
+  width: 700px; height: 700px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -40%);
+  border-color: rgba(201,168,76,0.06);
+  animation-duration: 8s;
+  animation-delay: 1s;
+}
+
+@keyframes ringExpand {
+  0%   { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+/* Floating gold particles */
+.aura-particles { position: absolute; inset: 0; pointer-events: none; }
+.aura-particle {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleDrift var(--dur, 6s) ease-in-out var(--delay, 0s) infinite;
+}
+@keyframes particleDrift {
+  0%   { opacity: 0; transform: translateY(0) scale(0.5); }
+  20%  { opacity: 0.8; }
+  80%  { opacity: 0.4; }
+  100% { opacity: 0; transform: translateY(-120px) scale(1.5); }
+}
+
+/* Corner accent lines */
+.hero-photo-frame::before,
+.hero-photo-frame::after {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+}
+.hero-photo-frame::before {
+  top: -2px; left: -2px;
+  width: 40px; height: 40px;
+  border-top: 2px solid var(--gold);
+  border-left: 2px solid var(--gold);
+}
+.hero-photo-frame::after {
+  bottom: -2px; right: -2px;
+  width: 40px; height: 40px;
+  border-bottom: 2px solid var(--gold);
+  border-right: 2px solid var(--gold);
+}
+
 .hero-photo-frame {
   height: 100%;
   max-height: calc(100vh - 56px);
   aspect-ratio: 3 / 4;
-  background: var(--surface);
-  border-left: 1px solid var(--border);
+  background: transparent;
+  border-left: 1px solid rgba(201,168,76,0.3);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  z-index: 1;
+  /* subtle gold frame glow */
+  filter: drop-shadow(0 0 30px rgba(201,168,76,0.15));
 }
 .hero-photo-frame img {
   width: 100%;
@@ -139,6 +266,9 @@ html { scroll-behavior: smooth; }
   object-fit: cover;
   object-position: top center;
   display: block;
+  /* Remove any gray — keep pure image */
+  background: transparent;
+  border-radius: 0;
 }
 .hero-photo-placeholder {
   width: 100%;
@@ -146,13 +276,8 @@ html { scroll-behavior: smooth; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  text-align: center;
-  padding: 1rem;
+  background: transparent;
+  overflow: hidden;
 }
 .hero-tag {
   position: absolute;
@@ -304,7 +429,100 @@ footer { background: var(--black); border-top: 1px solid var(--border); }
 .footer-name { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--gold); }
 .footer-copy { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--text-muted); }
 
+/* PROJECT EXPAND HINT */
+.project-thumb { position: relative; cursor: pointer; }
+.project-expand-hint {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(10,10,10,0.75);
+  color: var(--gold);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.5rem;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s, transform 0.2s;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+.project-card:hover .project-expand-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* LIGHTBOX */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.lightbox-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.lightbox-inner {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border: 1px solid rgba(201,168,76,0.3);
+  box-shadow: 0 0 80px rgba(201,168,76,0.12), 0 0 160px rgba(0,0,0,0.8);
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+.lightbox-overlay.active .lightbox-img { transform: scale(1); }
+.lightbox-close {
+  position: fixed;
+  top: 1.5rem; right: 1.5rem;
+  background: transparent;
+  border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold);
+  font-size: 1.1rem;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  z-index: 10000;
+}
+.lightbox-close:hover { background: var(--gold); color: var(--black); }
+.lightbox-caption { text-align: center; }
+.lightbox-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 0.25rem;
+}
+.lightbox-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  max-width: 480px;
+}
+
 @media (max-width: 767px) {
   .hero-photo-box { min-height: 70vh; }
   .hero-photo-frame { max-height: 70vh; }
+  .aura-ring-1 { width: 220px; height: 220px; }
+  .aura-ring-2 { width: 340px; height: 340px; }
+  .aura-ring-3 { width: 460px; height: 460px; }
 }

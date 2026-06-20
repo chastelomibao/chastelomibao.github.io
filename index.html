@@ -46,8 +46,14 @@
           </div>
         </div>
         <div class="col-md-6 hero-photo-box">
+          <!-- Aura background layers -->
+          <div class="hero-aura-bg">
+            <div class="aura-ring aura-ring-1"></div>
+            <div class="aura-ring aura-ring-2"></div>
+            <div class="aura-ring aura-ring-3"></div>
+            <div class="aura-particles" id="auraParticles"></div>
+          </div>
           <div class="hero-photo-frame">
-            
             <div class="hero-photo-placeholder"><img src="resources/images/chastepogi.png" alt="Chaste"></div>
           </div>
           <span class="hero-tag">Creative Designer</span>
@@ -118,10 +124,10 @@
       <div class="row g-0">
         <!-- Featured -->
         <div class="col-lg-7">
-          <div class="project-card featured h-100">
+          <div class="project-card featured h-100" data-lightbox="resources/images/watchfolk.JPG" data-title="Watchfolk" data-desc="A luxury watch e-commerce platform with full admin panel, PDO checkout, and a 6-table MySQL database. Built for COMP 010.">
             <div class="project-thumb">
-            
               <img src="resources/images/watchfolk.JPG" alt="Watchfolk">
+              <div class="project-expand-hint">🔍 Click to expand</div>
             </div>
             <div class="p-4">
               <div class="project-num mb-2">01 — Featured</div>
@@ -141,10 +147,10 @@
         <div class="col-lg-5">
           <div class="row g-0 h-100">
             <div class="col-12">
-              <div class="project-card">
+              <div class="project-card" data-lightbox="resources/images/pawster.JPG" data-title="PAWSTER" data-desc="Pet adoption &amp; marketplace platform with dynamic listings and full admin panel.">
                 <div class="project-thumb">
-                  <!-- Replace with: <img src="resources/image/pawster.jpg" alt="PAWSTER"> -->
                   <img src="resources/images/pawster.JPG" alt="Pawster">
+                  <div class="project-expand-hint">🔍 Click to expand</div>
                 </div>
                 <div class="p-4">
                   <div class="project-num mb-2">02</div>
@@ -158,10 +164,10 @@
               </div>
             </div>
             <div class="col-12">
-              <div class="project-card">
+              <div class="project-card" data-lightbox="resources/images/flying-dutchman.JPG" data-title="Flying Dutchman" data-desc="A side-scrolling game built with Pygame, featuring custom sprite animation, obstacle generation, and collision logic.">
                 <div class="project-thumb">
-                 
                   <img src="resources/images/flying-dutchman.JPG" alt="Flying Dutchman">
+                  <div class="project-expand-hint">🔍 Click to expand</div>
                 </div>
                 <div class="p-4">
                   <div class="project-num mb-2">03</div>
@@ -196,18 +202,18 @@
           </p>
         </div>
         <div class="col-lg-6 ps-lg-5 mt-5 mt-lg-0 d-flex flex-column justify-content-center">
-          <a href="https://m.me/yourprofile" class="contact-link d-flex align-items-center gap-3 py-3 border-bottom border-custom" target="_blank">
+          <a href="https://www.facebook.com/chaste.lomibao" class="contact-link d-flex align-items-center gap-3 py-3 border-bottom border-custom" target="_blank">
             <div class="contact-link-icon d-flex align-items-center justify-content-center">💬</div>
             <div>
-              <div class="contact-link-label">Messenger</div>
-              <div style="font-size:0.9rem;">Chat with me</div>
+              <div class="contact-link-label">Facebook</div>
+              <div style="font-size:0.9rem;">chaste.lomibao</div>
             </div>
           </a>
-          <a href="mailto:your@email.com" class="contact-link d-flex align-items-center gap-3 py-3 border-bottom border-custom">
+          <a href="mailto:chaste.lomibao@gmail.com" class="contact-link d-flex align-items-center gap-3 py-3 border-bottom border-custom">
             <div class="contact-link-icon d-flex align-items-center justify-content-center">✉</div>
             <div>
               <div class="contact-link-label">Email</div>
-              <div style="font-size:0.9rem;">your@email.com</div>
+              <div style="font-size:0.9rem;">chaste.lomibao@gmail.com</div>
             </div>
           </a>
           <a href="https://github.com/chastelomibao" class="contact-link d-flex align-items-center gap-3 py-3" target="_blank">
@@ -238,6 +244,18 @@
       </div>
     </div>
   </footer>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+    <div class="lightbox-inner">
+      <img id="lightboxImg" src="" alt="" class="lightbox-img">
+      <div class="lightbox-caption">
+        <div id="lightboxTitle" class="lightbox-title"></div>
+        <div id="lightboxDesc" class="lightbox-desc"></div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="resources/index.js"></script>
