@@ -227,33 +227,14 @@ html { scroll-behavior: smooth; }
   100% { opacity: 0; transform: translateY(-120px) scale(1.5); }
 }
 
-/* Corner accent lines */
-.hero-photo-frame::before,
-.hero-photo-frame::after {
-  content: '';
-  position: absolute;
-  z-index: 3;
-  pointer-events: none;
-}
-.hero-photo-frame::before {
-  top: -2px; left: -2px;
-  width: 40px; height: 40px;
-  border-top: 2px solid var(--gold);
-  border-left: 2px solid var(--gold);
-}
-.hero-photo-frame::after {
-  bottom: -2px; right: -2px;
-  width: 40px; height: 40px;
-  border-bottom: 2px solid var(--gold);
-  border-right: 2px solid var(--gold);
-}
+/* Corner accent lines removed */
 
 .hero-photo-frame {
   height: 100%;
   max-height: calc(100vh - 56px);
   aspect-ratio: 3 / 4;
   background: transparent;
-  border-left: 1px solid rgba(201,168,76,0.3);
+  border-left: none;
   position: relative;
   overflow: visible;
   z-index: 1;
