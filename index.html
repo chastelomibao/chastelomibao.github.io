@@ -3,268 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chaste Lomibao - Portfolio</title>
+  <title>Chaste — Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --gold: #C9A84C;
-      --gold-light: #E8C96A;
-      --black: #0A0A0A;
-      --charcoal: #111111;
-      --surface: #161616;
-      --border: #2A2A2A;
-      --text-muted: #888888;
-      --white: #F5F0E8;
-    }
-
-    body {
-      background-color: var(--black);
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    .font-serif { font-family: 'Playfair Display', serif; }
-    .font-mono { font-family: 'Space Mono', monospace; }
-    .text-gold { color: var(--gold) !important; }
-    .bg-charcoal { background-color: var(--charcoal) !important; }
-    .border-custom { border-color: var(--border) !important; }
-
-    .navbar {
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .navbar-brand {
-      font-family: 'Space Mono', monospace;
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold) !important;
-    }
-    .navbar-nav .nav-link {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted) !important;
-      transition: color 0.2s;
-    }
-    .navbar-nav .nav-link:hover { color: var(--gold) !important; }
-    .navbar-toggler { border-color: var(--border); }
-    .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(201,168,76,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-    }
-
-    .btn-gold {
-      background-color: var(--gold);
-      border-color: var(--gold);
-      color: var(--black);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.75rem 1.75rem;
-      border-radius: 0;
-    }
-    .btn-gold:hover {
-      background-color: var(--gold-light);
-      border-color: var(--gold-light);
-      color: var(--black);
-    }
-    .btn-outline-gold {
-      background-color: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.75rem 1.75rem;
-      border-radius: 0;
-    }
-    .btn-outline-gold:hover {
-      background-color: var(--gold);
-      color: var(--black);
-    }
-
-    .hero { padding-top: 56px; min-height: 100vh; }
-    .hero-eyebrow {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 30px;
-      height: 1px;
-      background: var(--gold);
-      margin-right: 0.75rem;
-      vertical-align: middle;
-    }
-    .hero-headline {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      font-weight: 900;
-      line-height: 0.95;
-    }
-    .hero-headline em { font-style: italic; color: var(--gold); display: block; }
-    .hero-photo-box {
-      background: var(--charcoal);
-      min-height: 100%;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-tag {
-      position: absolute;
-      bottom: 2rem;
-      left: 2rem;
-      background: var(--gold);
-      color: var(--black);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.4rem 1rem;
-    }
-
-    .section-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
-    }
-    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-
-    .display-quote {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700;
-      line-height: 1.15;
-    }
-    .display-quote span { color: var(--gold); }
-    .skill-badge {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-      background: transparent;
-      padding: 0.5rem 0.9rem;
-      display: inline-block;
-    }
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .stat-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
-      font-weight: 900;
-      line-height: 1;
-    }
-    .section-title em { font-style: italic; color: var(--gold); }
-    .project-card {
-      background: var(--charcoal);
-      border: 1px solid var(--border);
-      border-radius: 0;
-      overflow: hidden;
-      transition: border-color 0.2s;
-      height: 100%;
-    }
-    .project-card:hover { border-color: var(--gold); }
-    .project-thumb {
-      aspect-ratio: 16/10;
-      background: var(--surface);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.4s ease;
-      overflow: hidden;
-    }
-    .project-card.featured .project-thumb { aspect-ratio: 4/5; }
-    .project-card:hover .project-thumb { transform: scale(1.03); }
-    .ph-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 4rem;
-      font-weight: 900;
-      color: rgba(201,168,76,0.12);
-    }
-    .project-num {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-    }
-    .project-name { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--white); }
-    .project-card.featured .project-name { font-size: 1.8rem; }
-    .badge-tag {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-      background: transparent;
-      font-weight: 400;
-    }
-
-    .contact-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 4vw, 4rem);
-      font-weight: 900;
-      line-height: 1.05;
-    }
-    .contact-title em { color: var(--gold); font-style: italic; }
-    .contact-link { text-decoration: none; color: var(--white); transition: color 0.2s; }
-    .contact-link:hover { color: var(--gold); }
-    .contact-link-icon {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--border);
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .contact-link:hover .contact-link-icon { border-color: var(--gold); color: var(--gold); }
-    .contact-link-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    footer { background: var(--black); border-top: 1px solid var(--border); }
-    .footer-name { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--gold); }
-    .footer-copy { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--text-muted); }
-  </style>
+  <link rel="stylesheet" href="resources/index.css">
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-md fixed-top">
     <div class="container-fluid px-4 px-md-5">
       <a class="navbar-brand" href="#">Chaste</a>
@@ -281,31 +27,36 @@
     </div>
   </nav>
 
+  <!-- HERO -->
   <section class="hero d-flex align-items-center border-bottom border-custom">
     <div class="container-fluid px-0">
       <div class="row g-0 align-items-stretch">
         <div class="col-md-6 d-flex flex-column justify-content-center px-4 px-md-5 py-5 border-end border-custom">
-          <p class="hero-eyebrow mb-4">Portfolio 2026</p>
+          <p class="hero-eyebrow mb-4">Portfolio 2025</p>
           <h1 class="hero-headline mb-4">
             Designer<br>
             <em>&amp; Developer.</em>
           </h1>
           <p class="text-muted mb-4" style="font-size:0.9rem; line-height:1.8; max-width:380px;">
-            I craft clean digital experiences - from databases to interfaces. Studying Information Management at PUP, building things that look as good as they function.
+            I craft clean digital experiences — from databases to interfaces. Studying Information Management at PUP, building things that look as good as they function.
           </p>
           <div class="d-flex flex-wrap gap-3">
-            <a href="#projects" class="btn btn-gold">View Work</a>
+            <a href="#projects" class="btn btn-gold">↓ View Work</a>
             <a href="#contact" class="btn btn-outline-gold">Get in Touch</a>
           </div>
         </div>
         <div class="col-md-6 hero-photo-box">
-          <span class="font-mono text-uppercase text-muted" style="font-size:0.85rem; letter-spacing:0.2em;">Add Your Photo</span>
+          <div class="hero-photo-frame">
+            <!-- Replace with: <img src="resources/image/your-photo.jpg" alt="Chaste"> -->
+            <div class="hero-photo-placeholder">Add Your Photo<br><span style="opacity:0.6;">(portrait, 3:4)</span></div>
+          </div>
           <span class="hero-tag">Creative Designer</span>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ABOUT -->
   <section class="bg-charcoal border-bottom border-custom py-5" id="about">
     <div class="container-fluid px-4 px-md-5 py-4">
       <div class="section-label">About Me</div>
@@ -351,6 +102,7 @@
     </div>
   </section>
 
+  <!-- PROJECTS -->
   <section class="py-5" id="projects">
     <div class="container-fluid px-4 px-md-5 py-4">
       <div class="row align-items-end mb-5">
@@ -364,10 +116,11 @@
       </div>
 
       <div class="row g-0">
-    
+        <!-- Featured -->
         <div class="col-lg-7">
           <div class="project-card featured h-100">
             <div class="project-thumb">
+              <!-- Replace with: <img src="resources/image/watchfolk.jpg" alt="Watchfolk"> -->
               <span class="ph-text">WF</span>
             </div>
             <div class="p-4">
@@ -384,11 +137,13 @@
           </div>
         </div>
 
+        <!-- Side cards -->
         <div class="col-lg-5">
           <div class="row g-0 h-100">
             <div class="col-12">
               <div class="project-card">
                 <div class="project-thumb">
+                  <!-- Replace with: <img src="resources/image/pawster.jpg" alt="PAWSTER"> -->
                   <span class="ph-text">PW</span>
                 </div>
                 <div class="p-4">
@@ -405,6 +160,7 @@
             <div class="col-12">
               <div class="project-card">
                 <div class="project-thumb">
+                  <!-- Replace with: <img src="resources/image/packet-tracer.jpg" alt="Packet Tracer Labs"> -->
                   <span class="ph-text">PT</span>
                 </div>
                 <div class="p-4">
@@ -424,6 +180,7 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section class="bg-charcoal border-top border-custom py-5" id="contact">
     <div class="container-fluid px-4 px-md-5 py-4">
       <div class="row">
@@ -465,6 +222,7 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="py-4">
     <div class="container-fluid px-4 px-md-5">
       <div class="row align-items-center text-center text-md-start">
@@ -482,5 +240,6 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="resources/index.js"></script>
 </body>
 </html>
